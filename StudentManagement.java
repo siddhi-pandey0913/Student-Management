@@ -5,6 +5,7 @@ public class StudentManagement {
 
     public void addStudent(Student s) {
         students.add(s);
+        System.out.println("Added successfully");
     }
 
     public void viewAllStudents() {
@@ -29,5 +30,30 @@ public class StudentManagement {
             }
         }
     }
+
+    public void getTopper() {
+        if (students.isEmpty()) {
+            System.out.println("No student is available");
+            return;
+        }
+
+        Student topper = students.get(0);
+        for (Student s : students) {
+            if (s.getMarks() > topper.getMarks()) {
+                topper = s;
+            }
+        }
+        System.out.println("The topper is:" + topper);
+    }
+    public void updateMarks(int id, double marks) {
+    for (Student s : students) {
+        if (s.getId() == id) {
+            s.setMarks(marks); // use setter
+            System.out.println("Marks updated for student ID: " + id);
+            return;
+        }
+    }
+    System.out.println("Student with ID " + id + " not found.");
+}
 
 }
